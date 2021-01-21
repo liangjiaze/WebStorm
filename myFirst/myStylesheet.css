@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+    margin: 50px 100px;
+    padding: 50px 100px;
+}
+.nkj{
+    border: 2px crimson dashed;
+    background-color: aquamarine;
+}
+#wenben{
+    background-image: url("myFirst/大数据学习路线图.png");
+    width: 1144px;
+    height: 285px;
+}
+img{
+
+}
+div{
+    font-family: 楷体;
+    color: #f5fc54;
+    font-size: larger;
+    text-align: center;
+}

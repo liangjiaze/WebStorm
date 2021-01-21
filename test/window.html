@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>window</title>
+
+        <script type="text/javascript">
+            function chk() {
+                alert("点我了");
+            }
+
+            window.onload = function () {
+                var btn = document.getElementById("btn");
+                btn.onclick = function () {
+                    alert("register succes!")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="click me" onclick="chk();"/>
+        <input type="button" value="register" id="btn"/>
+    </body>
+</html>

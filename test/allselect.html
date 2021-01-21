@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script type="text/javascript">
+
+            var itemList = document.getElementsByName("item");
+
+            function checkAll(all) {
+
+                var flag = all.checked;
+                for(var x = 0; x < itemList.length; x++){
+                    itemList[x].checked = flag;
+                }
+            }
+
+            function checknotAll(all) {
+
+                var flag = all.checked;
+                for(var x = 0; x < itemList.length; x++){
+                    itemList[x].checked = !flag;
+                }
+            }
+
+            function check() {
+                for(var x = 0; x < itemList.length; x++){
+                    var flag = itemList[x].checked;
+                    itemList[x].checked = !flag;
+                }
+            }
+
+            function getSum() {
+                var sum = 0;
+                for(var x = 0; x <itemList.length; x++){
+                    var flag = itemList[x].checked;
+                    if(flag){
+                        sum += Number(itemList[x].value);
+                    }
+                }
+                document.getElementById("sumid").innerHTML = sum;
+            }
+        </script>
+    </head>
+    <body>
+        <div>商品列表</div>
+        <input type="checkbox" name="item" value="6000"/>笔记本6000元<br/>
+        <input type="checkbox" name="item" value="5000"/>笔记本5000元<br/>
+        <input type="checkbox" name="item" value="4000"/>笔记本4000元<br/>
+        <input type="checkbox" name="item" value="3000"/>笔记本3000元<br/>
+        <input type="checkbox" name="item" value="2000"/>笔记本2000元<br/>
+        <input type="checkbox" name="item" value="1000"/>笔记本1000元<br/>
+
+        <input type="checkbox" name="item" onclick="checkAll(this);"/>全选<br/>
+        <input type="checkbox" name="item" onclick="checknotAll(this);"/>全不选<br/>
+        <input type="checkbox" name="item" onclick="check();"/>反选<br/>
+        <input type="button" value="总金额" onclick="getSum();"/><span id="sumid"/> <br/>
+
+    </body>
+</html>

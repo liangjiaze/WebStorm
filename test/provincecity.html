@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script type="text/javascript">
+            function selectcity() {
+                var arr = [[],["郑州","洛阳","开封"],["沈阳","大连","鞍山"],["青岛","济南","烟台"]];
+
+                var provinceElement = document.getElementById("province");
+                var cityElement = document.getElementById("city");
+
+                var index = provinceElement.selectedIndex;
+                var cityArr = arr[index];
+
+                cityElement.innerHTML = "<option>--选择市--</option>";
+
+                for(var x = 0; x < cityArr.length; x++){
+                    var s = "<option>"+cityArr[x]+"</option>";
+                    cityElement.innerHTML += s;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <select id="province" onchange="selectcity();">
+            <option>--选择省--</option>
+            <option>河南省</option>
+            <option>辽宁省</option>
+            <option>山东省</option>
+        </select>
+
+        <select id="city">
+            <option>--选择市--</option>
+        </select>
+        <!--<br/>-->
+        <!--<input type="text" id="amm" value=""/>-->
+        <!--<input type="button" id="ann" value="确认">-->
+
+
+    </body>
+</html>

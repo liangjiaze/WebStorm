@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery案例之抽奖</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+<!-- 小像框 -->
+<div style="border-style:dotted;width:160px;height:100px">
+    <img id="img1ID" src="../img/man00.jpg" style="width:160px;height:100px"/>
+</div>
+
+<!-- 大像框 -->
+<div
+        style="border-style:double;width:800px;height:500px;position:absolute;left:500px;top:10px">
+    <img id="img2ID" src="../img/man00.jpg" width="800px" height="500px"/>
+</div>
+
+<!-- 开始按钮 -->
+<input
+        id="startID"
+        type="button"
+        value="点击开始"
+        style="width:150px;height:150px;font-size:22px"
+        onclick="imgStart()">
+
+<!-- 停止按钮 -->
+<input
+        id="stopID"
+        type="button"
+        value="点击停止"
+        style="width:150px;height:150px;font-size:22px"
+        onclick="imgStop()">
+
+
+<script language='javascript' type='text/javascript'>
+    //准备一个一维数组，装用户的像片路径
+    var imgs = [
+        "../img/man00.jpg",
+        "../img/man01.jpg",
+        "../img/man02.jpg",
+        "../img/man03.jpg",
+        "../img/man04.jpg",
+        "../img/man05.jpg",
+        "../img/man06.jpg"
+    ];
+
+    //需求：点击开始，循环改变显示的图片，当点击停止的时候将显示的小图片显示到大图片位置
+
+    //定时器任务id
+    var taskId;
+    //定义一个变化的索引
+    var number = 0;
+
+    //让图片更改不停的切换，从0位置到6不停的变化
+    function imgChange(){
+        taskId = setInterval(function () {
+            //计算出轮循的位置
+            var i = number%imgs.length;
+            curImg = imgs[i];//获取当前变化的图片地址
+            //更新小图片
+            $("#img1ID").attr("src",curImg);
+
+            number++;
+
+        },100);
+    }
+    
+    //点击开始
+    function imgStart() {
+        //让图片更改不停的切换，从0位置到6不停的变化
+        imgChange();
+        //禁用开始按钮
+        $("#startID").prop("disabled",true);
+        //启用停止按钮
+        $("#stopID").prop("disabled",false);
+    }
+
+    //点击停止
+    function imgStop() {
+        //停止定时器
+        clearInterval(taskId);
+        //将小图片路径更新到大图片
+         $("#img2ID").hide();//先隐藏
+         $("#img2ID").attr("src",curImg);//更新
+         $("#img2ID").fadeIn(2000);//淡入
+        //延迟2秒后显示
+        //$("#img2ID").delay(2000).show(0);//只需要了解
+
+        //启用开始按钮
+        $("#startID").prop("disabled",false);
+        //禁用停止按钮
+        $("#stopID").prop("disabled",true);
+    }
+
+</script>
+</body>
+</html>

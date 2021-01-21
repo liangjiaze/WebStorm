@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <script type="text/javascript">
+            function sendAJAX() {
+                //创建请求对象
+                var request = new XMLHttpRequest();
+                /*
+                XMLHttpRequest.readyState
+                         0     连接未创建
+                         1     连接已经创建
+                         2      请求已接受
+                         3      请求处理中
+                         4      请求处理完成,响应已经就绪
+                */
+                //设置请求状态变化时所触发的事件
+                request.onreadystatechange = function () {
+                    if(request.readyState == 4){
+                        //请求处理完成
+                        if(request.status == 200){
+                            // 响应成功
+                            alert(request.responseText);
+                        }
+                    }
+                }
+                //创建连接
+                request.open("post", "http://localhost:8080/myAJAX/AJAXServlet",true);
+                //发送请求
+                request.send();
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="按钮" onclick="sendAJAX();">
+    </body>
+</html>
